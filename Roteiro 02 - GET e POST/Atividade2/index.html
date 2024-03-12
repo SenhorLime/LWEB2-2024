@@ -1,0 +1,116 @@
+<!--
+    Aluno: João Vitor Lima Zeferino
+    Data: 08/03/2024
+-->
+<!DOCTYPE html>
+<html lang="pt-br" data-theme="dark">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../public/css/styles.css"/>
+    <title>Atividade 2</title>
+</head>
+<body>
+<form method="post" action="processForm.php">
+    <input type="text" name="nome" id="nome" placeholder="Nome" required/>
+    <input type="email" name="email" id="email" placeholder="Email" required/>
+
+    <select name="sexo" aria-label="Sexo" required>
+        <option selected disabled value="">
+            Sexo
+        </option>
+        <option value="Masculino">Masculino</option>
+        <option value="Feminino">Feminino</option>
+        <option value="Outro">Outro</option>
+        <option value="Prefiro não dizer">Prefiro não dizer</option>
+    </select>
+
+    <fieldset id="interesse-fieldset">
+        <details class="dropdown">
+            <summary>Interesses (Selecione pelo menos um)</summary>
+            <ul>
+                <li>
+                    <label>
+                        <input type="checkbox" name="interesses[]" value="Esportes"/>
+                        Esportes
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" name="interesses[]" value="Música"/>
+                        Música
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" name="interesses[]" value="Tecnologia"/>
+                        Tecnologia
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <input type="checkbox" name="interesses[]" value="Videogames"/>
+                        Videogames
+                    </label>
+                </li>
+            </ul>
+        </details>
+    </fieldset>
+
+    <select name="pais" aria-label="Selecione seu país..." required>
+        <option selected disabled value="">
+            Selecione seu país...
+        </option>
+        <option value="Brasil">Brasil</option>
+        <option value="Estados Unidos">Estados Unidos</option>
+        <option value="Reino Unido">Reino Unido</option>
+        <option value="França">França</option>
+    </select>
+
+    <textarea
+            aria-label="Mensagem"
+            name="mensagem"
+            placeholder="Escreva uma mensagem aqui..."
+            required
+    ></textarea>
+
+    <input type="submit" value="Enviar" disabled/>
+</form>
+
+<script>
+    // Script para verificar se todos os inputs com required foram preenchidos
+    // Caso nao tenham sido ele impede o usuario de submeter o formulario e colocar uma mensagem de erro nos inputs
+    const form = document.querySelector("form");
+    const requiredFields = form.querySelectorAll("[required]");
+    const submitButton = form.querySelector("input[type=submit]");
+    const interesseFieldset = document.getElementById("interesse-fieldset");
+
+    form.addEventListener("input", () => {
+        let allInputFilled = true;
+        requiredFields.forEach((field) => {
+            if (field.value === "") {
+                field.ariaInvalid = true;
+                allInputFilled = false;
+            } else {
+                field.ariaInvalid = false;
+            }
+        })
+
+        submitButton.disabled = !allInputFilled;
+    });
+
+    form.addEventListener("input", (event) => {
+        const checkedInput = interesseFieldset.querySelectorAll("input[type=checkbox]:checked");
+
+        if (checkedInput.length === 0) {
+            interesseFieldset.querySelector("summary").ariaInvalid = true;
+            submitButton.disabled = true;
+            event.preventDefault();
+        } else {
+            interesseFieldset.querySelector("summary").ariaInvalid = false;
+            submitButton.disabled = false;
+        }
+    });
+</script>
+</body>
+</html>

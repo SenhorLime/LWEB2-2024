@@ -1,0 +1,100 @@
+<!--
+    Aluno: João Vitor Lima Zeferino
+    Data: 11/03/2024
+-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tailwind + Alpine.js + PHP Login Page</title>
+
+    <link href="../public/css/tailwind.css" rel="stylesheet"/>
+    <script
+            defer
+            src="https://kit.fontawesome.com/ad9be2ab79.js"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            defer
+            src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.3/dist/cdn.min.js"
+    ></script>
+</head>
+<body
+        class="bg-gradient-to-r from-purple-500 to-pink-300 flex justify-center items-center w-screen h-screen"
+>
+<div
+        class="flex rounded-xl bg-gray-500 bg-opacity-10 shadow-xl backdrop-blur-md w-96 h-fit flex-col justify-center items-center"
+>
+    <div class="w-full flex flex-col justify-center items-center">
+        <h1 class="text-4xl text-gray-100 font-bold mt-3">Hello User</h1>
+        <p class="text-2xl text-gray-300 font-normal mt-2">
+            Please enter your data
+        </p>
+
+        <form action="loginForm.php"
+              class="flex flex-col w-full justify-center items-center m-6 relative"
+              method="post"
+        >
+            <input
+                    class="w-4/5 h-10 p-3 mb-3 rounded-md bg-gray-200 bg-opacity-10 text-slate-300 font-normal placeholder:text-slate-300 placeholder:font-medium"
+                    id="username"
+                    name="username"
+                    placeholder="Username"
+                    required
+                    type="text"
+            />
+
+            <input
+                    class="w-4/5 h-10 p-3 mb-3 rounded-md bg-gray-200 bg-opacity-10 text-slate-300 font-normal placeholder:text-slate-300 placeholder:font-medium"
+                    id="email"
+                    name="email"
+                    placeholder="Email"
+                    required
+                    type="email"
+            />
+
+            <div
+                    class="flex flex-row w-4/5 justify-center items-center"
+                    x-data="{ showPassword : false }"
+            >
+                <input
+                        :type=" showPassword ? 'text' : 'password' "
+                        class="w-5/6 h-10 p-3 mb-3 rounded-md bg-gray-200 bg-opacity-10 text-slate-300 font-normal placeholder:text-slate-300 placeholder:font-medium"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                        required
+                />
+
+                <button
+                        class="w-1/6 h-10 p-3 mb-3 ml-2 rounded-md bg-gray-200 bg-opacity-10 text-slate-300 font-normal flex justify-center items-center"
+                        type="button"
+                        x-on:click="showPassword = !showPassword"
+                >
+                    <i :class=" showPassword ? 'fa-eye' : 'fa-eye-slash' " class="fa-regular"></i>
+                </button>
+
+            </div>
+
+            <select aria-label="Selecione seu país..."
+                    class="w-4/5 h-18 p-3 mb-3 rounded-md bg-gray-200 bg-opacity-10 text-slate-300 font-normal"
+                    name="pais" required>
+                <option selected disabled value="" class="text-slate-500">
+                    Selecione seu país...
+                </option>
+                <option value="Brasil" class="text-slate-500">Brasil</option>
+                <option value="Estados Unidos" class="text-slate-500">Estados Unidos</option>
+                <option value="Reino Unido" class="text-slate-500">Reino Unido</option>
+                <option value="França" class="text-slate-500">França</option>
+            </select>
+
+
+            <input class="w-4/5 h-10 p-1 rounded-md text-lg text-slate-300 font-medium bg-violet-800 bg-opacity-70 hover:bg-opacity-60 hover:transition-all ease-in duration-200"
+                   type="submit" value="Register">
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

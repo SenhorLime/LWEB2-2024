@@ -1,0 +1,48 @@
+<!--
+    Aluno: João Vitor Lima Zeferino
+    Data: 06/03/2024
+-->
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../public/css/styles.css" />
+    <title>Formulario</title>
+  </head>
+  <body>
+    <div class="centered-form">
+      <h3>Usando Metodo GET</h3>
+      <form method="GET" action="processar_get.php">
+        <label>
+          Nome:
+          <input type="text" name="nome" placeholder="Nome" />
+        </label>
+
+        <label>
+          Email:
+          <input type="email" name="email" placeholder="Email" />
+        </label>
+
+        <input type="submit" value="Enviar" />
+      </form>
+    </div>
+
+    <div class="centered-form">
+      <h3>Usando Metodo POST</h3>
+      <form method="POST" action="processar_post.php">
+        <label>
+          Nome:
+          <input type="text" name="nome" placeholder="Nome" />
+        </label>
+
+        <label>
+          Email:
+          <input type="email" name="email" placeholder="Email" />
+        </label>
+
+        <input type="submit" value="Enviar" />
+      </form>
+    </div>
+  </body>
+</html>
