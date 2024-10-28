@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prática LWEB 2 - Classes</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="w-screen h-screen flex justify-center items-center">
+    <main class="flex flex-row justify-center items-center">
+      <form action="processa.php" method="POST">
+        <fieldset class="p-4">
+          <h3 class="font-semibold py-4">Aluno</h3>
+          <label>Nome<input type="text" name="nome" /></label>
+          <label>CPF<input type="text" name="cpf" /></label>
+          <label>Matricula<input type="text" name="matricula" /></label>
+
+          <input type="submit" value="Enviar" />
+        </fieldset>
+      </form>
+
+      <form action="processa.php" method="POST">
+        <fieldset class="p-4">
+          <h3 class="font-semibold py-4">Professor</h3>
+          <label>Nome<input type="text" name="nome" /></label>
+          <label>CPF<input type="text" name="cpf" /></label>
+          <label>SIAPE<input type="text" name="siape" /></label>
+
+          <input type="submit" value="Enviar" />
+        </fieldset>
+      </form>
+    </main>
+  </body>
+</html>
